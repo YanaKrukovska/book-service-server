@@ -1,0 +1,94 @@
+#################################################################################
+####                            BOOKS                                         ###
+#################################################################################
+### Get all books
+GET http://localhost:8041/books
+
+### Get all books sortet by rating
+GET http://localhost:8041/books?sort=bookRate,desc&sort=title,asc
+
+### Get all books sortet by reads
+GET http://localhost:8041/books?sort=readCount,desc&sort=title,asc
+
+### Get all books sortet by title
+GET http://localhost:8041/books?sort=title,asc
+
+### Get  books by  title
+GET http://localhost:8041/books/search/getBooksByTitle?title=A Farewell to Arms
+
+### Get all books by Author sortet by title
+GET http://localhost:8041/books/search/getBooksByAuthor?author=Ernest Hemingway&sort=title,asc
+
+###  CREATE BOOK
+POST http://localhost:8041/books
+Content-Type: application/json
+
+{
+  "title": "Flowers for Algernon",
+  "author": "Daniel Keyes"
+}
+
+
+###  UPDATE BOOK
+POST http://localhost:8041/books
+Content-Type: application/json
+
+{
+  "id": 15,
+  "title": "Flowers for Algernon",
+  "author": "Daniel Keyes"
+}
+
+###  DELETE BOOK
+DELETE http://localhost:8041/books/15
+
+
+
+
+#################################################################################
+####                            READS                                         ###
+#################################################################################
+
+
+###
+GET http://localhost:8041/reads
+
+### get all books
+GET http://localhost:8041/reads
+
+### get all possible searches
+GET http://localhost:8041/reads/search
+
+###
+GET http://localhost:8041/reads/search/findByUserId?id=1
+###
+GET http://localhost:8041/reads/search/findByUserName?name=Oleh Vinnik&projection=view
+
+###
+GET http://localhost:8041/reads/search/findByBookId?id=1&projection=view
+###
+GET http://localhost:8041/reads/search/findByBookTitle?title=Journey to the End of the Night&projection=view
+
+
+###
+GET http://localhost:8041/reads/search/countReadsByUserId?id=3
+
+###
+GET http://localhost:8041/reads/search/countReadsByBookId?id=14
+
+
+###
+GET http://localhost:8041/reads?projection=view
+
+###
+GET http://localhost:8041/users
+
+
+###
+GET http://localhost:8041/reads/search/findByUserId?id=1
+
+###
+GET http://localhost:8041/reads/search/findByUserName?name=Oleh Vinnik
+
+### get app version
+GET http://localhost:8041/version

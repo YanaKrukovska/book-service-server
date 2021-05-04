@@ -1,0 +1,22 @@
+#run all containers
+docker-compose -f docker-compose.yml up
+
+#stop all containers
+docker-compose -f docker-compose.yml down
+
+# list running containers
+docker ps
+
+# run only database
+docker-compose up -d db
+
+# run only service
+docker-compose up -d book-server
+
+
+# build db image
+docker build -f ./docker/docker-wrapper/Dockerfile --tag=db:latest .
+
+#build service image
+docker build --tag=bookservice:latest .
+
