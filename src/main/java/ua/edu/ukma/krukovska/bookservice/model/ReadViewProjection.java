@@ -18,6 +18,9 @@ public interface ReadViewProjection {
     @Value("#{target.user.id}")
     long getUserId();
 
+    @Value("#{target.user.name}")
+    String getUserName();
+
     Byte getRate();
 
     String getReview();

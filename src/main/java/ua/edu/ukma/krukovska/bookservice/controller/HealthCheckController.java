@@ -8,6 +8,6 @@ public class HealthCheckController {
 
     @GetMapping("/version")
     public String getVersion() {
-        return "03.05.2021 12:45";
+        return "05.05.2021 19:14";
     }
 }

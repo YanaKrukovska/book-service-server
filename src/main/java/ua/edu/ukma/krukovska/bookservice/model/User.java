@@ -1,6 +1,8 @@
 package ua.edu.ukma.krukovska.bookservice.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity(name = "users")
@@ -16,6 +18,15 @@ public class User {
     @Column(nullable = false)
     private String email;
 
+    @Column
+    private String password;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+
     public User() {
         super();
     }
@@ -24,6 +35,13 @@ public class User {
         super();
         this.name = name;
         this.email = email;
+    }
+
+    public User(String name, String email, String password) {
+        super();
+        this.name = name;
+        this.email = email;
+        this.password = password;
     }
 
     public long getId() {
@@ -50,6 +68,21 @@ public class User {
         this.email = author;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
     @Override
     public String toString() {

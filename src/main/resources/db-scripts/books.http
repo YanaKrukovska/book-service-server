@@ -59,13 +59,30 @@ GET http://localhost:8041/reads
 ### get all possible searches
 GET http://localhost:8041/reads/search
 
+###  CREATE Read
+POST http://localhost:8041/reads
+Content-Type: application/json
+
+{
+  "rate": 4,
+  "review": "Could have been better",
+  "readDate": "2021-04-23T18:25:43.51",
+  "user": "http://localhost:8041/users/2",
+  "book": "http://localhost:8041/books/4"
+}
+
+### Delete read
+DELETE http://localhost:8041/reads/43
+
 ###
 GET http://localhost:8041/reads/search/findByUserId?id=1
+
 ###
 GET http://localhost:8041/reads/search/findByUserName?name=Oleh Vinnik&projection=view
 
 ###
-GET http://localhost:8041/reads/search/findByBookId?id=1&projection=view
+GET http://localhost:8041/reads/search/findByBookId?id=4&projection=view
+
 ###
 GET http://localhost:8041/reads/search/findByBookTitle?title=Journey to the End of the Night&projection=view
 
