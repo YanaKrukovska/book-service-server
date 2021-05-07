@@ -53,10 +53,21 @@ services:
       - spring-network
     restart: unless-stopped
 
+  book-service-ui:
+    image: book-service-ui:latest
+    container_name: ui
+    ports:
+      - "4200:80"
+    restart: always
+    depends_on:
+      - book-server
+    networks:
+      - angular-network
 
 networks:
   spring-network:
     driver: bridge
+  angular-network:
 
 volumes:
   bookservice_data:
